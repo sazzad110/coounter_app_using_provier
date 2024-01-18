@@ -1,3 +1,5 @@
+// Simple counter using setState
+
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
