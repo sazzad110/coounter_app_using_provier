@@ -1,5 +1,6 @@
 // Simple counter using setState
 
+import 'package:coounter_app_using_provier/second.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -10,14 +11,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<int> numbers = [1,2,3,4,5];
+  List<int> numbers = [1, 2, 3, 4, 5];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           setState(() {
-            numbers.add(numbers.last+1);
+            numbers.add(numbers.last + 1);
           });
         },
         child: Icon(Icons.add),
@@ -26,17 +27,27 @@ class _HomeState extends State<Home> {
       body: SizedBox(
         child: Column(
           children: [
-            Text(numbers.last.toString(),
-            style: TextStyle(fontSize: 30),),
+            Text(
+              numbers.last.toString(),
+              style: TextStyle(fontSize: 30),
+            ),
             Expanded(
               child: ListView.builder(
                 itemCount: numbers.length,
-                itemBuilder: (context, index){
-                  return  Text(
-                    numbers[index].toString(),style: TextStyle(fontSize: 30),
+                itemBuilder: (context, index) {
+                  return Text(
+                    numbers[index].toString(),
+                    style: TextStyle(fontSize: 30),
                   );
                 },
               ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Second(numbers: numbers)));
+              },
+              child: Text("Next Page"),
             )
           ],
         ),
