@@ -1,8 +1,9 @@
+import 'package:coounter_app_using_provier/list_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Second extends StatefulWidget {
-  final List<int>numbers;
-  const Second({super.key,required this.numbers});
+  const Second({super.key});
 
   @override
   State<Second> createState() => _SecondState();
@@ -11,35 +12,44 @@ class Second extends StatefulWidget {
 class _SecondState extends State<Second> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Consumer<NumberListProvider>(
+        builder: (context,numbersProvierModel,child) =>  Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(() {
-            widget.numbers.add(widget.numbers.last+1);
-          });
+        onPressed: () {
+          numbersProvierModel.add();
         },
         child: Icon(Icons.add),
       ),
-      appBar: AppBar(title: Text("Counter App")),
+      appBar: AppBar(title: Text("second page")),
       body: SizedBox(
-        child: Column(
-          children: [
-            Text(widget.numbers.last.toString(),
-            style: TextStyle(fontSize: 30),),
-            Expanded(
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: widget.numbers.length,
-                itemBuilder: (context, index){
-                  return  Text(
-                    widget.numbers[index].toString()+",",style: TextStyle(fontSize: 30),
-                  );
-                },
+          child: Column(
+            children: [
+              Text(
+                numbersProvierModel.numbers.last.toString(),
+                style: TextStyle(fontSize: 30),
               ),
-            )
-          ],
-        ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: numbersProvierModel.numbers.length,
+                  itemBuilder: (context, index) {
+                    return Text(
+                      numbersProvierModel.numbers[index].toString(),
+                      style: TextStyle(fontSize: 30),
+                    );
+                  },
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const Second()));
+                },
+                child: Text("Next Page"),
+              )
+            ],
+          ),
       ),
+        ),
     );
   }
 }
