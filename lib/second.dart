@@ -26,7 +26,7 @@ class _SecondState extends State<Second> {
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
           ),
           centerTitle: true,
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.indigo,
           elevation: 0, 
         ),
         body: Container(
