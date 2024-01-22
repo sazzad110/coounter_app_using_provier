@@ -26,8 +26,8 @@ class _SecondState extends State<Second> {
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
           ),
           centerTitle: true,
-          backgroundColor: Colors.blue, // You can customize the color
-          elevation: 0, // No shadow
+          backgroundColor: Colors.blue,
+          elevation: 0, 
         ),
         body: Container(
           padding: EdgeInsets.all(16.0),
@@ -80,14 +80,6 @@ class _SecondState extends State<Second> {
                     ),
                   ),
                 ),
-                // ElevatedButton(
-                //   onPressed: () {
-                //     Navigator.of(context).push(
-                //       MaterialPageRoute(builder: (context) => const Second()),
-                //     );
-                //   },
-                //   child: Text("Next Page"),
-                // )
               ],
             ),
           ),

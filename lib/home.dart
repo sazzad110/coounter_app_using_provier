@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
           ),
           centerTitle: true,
           backgroundColor: Colors.indigo,
-          elevation: 0, // No shadow
+          elevation: 0, 
         ),
         body: Container(
           padding: EdgeInsets.all(16.0),
